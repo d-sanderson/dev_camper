@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
+const errorHandler = require('./middleware/error');
 
 const connectDB = require('./config/db')
 // Load env filds
@@ -23,6 +24,8 @@ const bootcamps = require('./routes/bootcamps');
 
 //  Mount Routers
 app.use('/api/v1/bootcamps', bootcamps);
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 
