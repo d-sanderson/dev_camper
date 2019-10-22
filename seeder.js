@@ -28,7 +28,7 @@ const bootcamps = JSON.parse(
 const importData = async () => {
   try {
     await Bootcamp.create(bootcamps);
-    console.log('Data Imported Successfully!'.green.inverse);
+    console.log('Data Imported...'.green.inverse);
     process.exit();
   } catch (err) {
     console.log(err);
@@ -39,7 +39,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Bootcamp.deleteMany();
-    console.log('Data Destroyed!'.red.inverse);
+    console.log('Data Destroyed...'.red.inverse);
     process.exit();
   } catch (err) {
     console.log(err);
@@ -49,4 +49,7 @@ if (process.argv[2] === '-i') {
   importData();
 } else if (process.argv[2] === '-d') {
   deleteData();
+} else {
+  console.log('No argv provided:'.yellow.bold, 'Enter -i or -d'.green.bold)
+  process.exit()
 }
